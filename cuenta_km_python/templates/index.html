@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuenta KM GPS</title>
+</head>
+<body>
+    <h1>Cuenta KM GPS</h1>
+
+    <p>Latitud: <span id="latitud">---</span></p>
+    <p>Longitud: <span id="longitud">---</span></p>
+    <p>Velocidad GPS: <span id="velocidad">---</span> km/h</p>
+
+    <button onclick="iniciarGPS()">Iniciar GPS</button>
+    <button onclick="pararGPS()">Parar GPS</button>
+
+    <script>
+        let watchId = null;
+
+        function iniciarGPS() {
+            if (!navigator.geolocation) {
+                alert("Tu navegador no soporta GPS");
+                return;
+            }
+
+            watchId = navigator.geolocation.watchPosition(
+                function(posicion) {
+                    const lat = posicion.coords.latitude;
+                    const lon = posicion.coords.longitude;
+                    const speed = posicion.coords.speed;
+
+                    document.getElementById("latitud").textContent = lat;
+                    document.getElementById("longitud").textContent = lon;
+                    document.getElementById("velocidad").textContent =
+                        speed ? (speed * 3.6).toFixed(2) : "0.00";
+
+                    fetch("/gps", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            latitud: lat,
+                            longitud: lon,
+                            velocidad: speed
+                        })
+                    });
+                },
+                function(error) {
+                    alert("Error GPS: " + error.message);
+                },
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 0,
+                    timeout: 10000
+                }
+            );
+        }
+
+        function pararGPS() {
+            if (watchId !== null) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+            }
+        }
+    </script>
+</body>
+</html>
