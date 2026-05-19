@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cuenta KM GPS</title>
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: cyan;
+        }
+
+        .panel {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dato {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .valor {
+            color: cyan;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-start {
+            background-color: green;
+            color: white;
+        }
+
+        .btn-stop {
+            background-color: red;
+            color: white;
+        }
+
+        #mapa {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Cuenta KM GPS</h1>
+
+    <p>
+    <a href="/strava/login">
+        Conectar con Strava
+    </a>
+   </p>
+
+    <div class="panel">
+
+        <div class="dato">
+            Latitud:
+            <span class="valor" id="latitud">---</span>
+        </div>
+
+        <div class="dato">
+            Longitud:
+            <span class="valor" id="longitud">---</span>
+        </div>
+
+        <div class="dato">
+            Velocidad:
+            <span class="valor" id="velocidad">0.00</span>
+            km/h
+        </div>
+
+        <div class="dato">
+            Distancia:
+            <span class="valor" id="distancia">0.000</span>
+            km
+        </div>
+
+        <button class="btn-start" onclick="iniciarGPS()">
+            Iniciar GPS
+        </button>
+
+        <button class="btn-stop" onclick="pararGPS()">
+            Parar GPS
+        </button>
+
+    </div>
+
+    <div id="mapa"></div>
+
+    <script>
+
+        let watchId = null;
+
+        let mapa = null;
+        let marcador = null;
+        let lineaRuta = null;
+
+        let puntosRuta = [];
+
+        let distanciaTotal = 0;
+
+        let ultimaPosicion = null;
+
+        function iniciarMapa(lat, lon) {
+
+            mapa = L.map("mapa").setView([lat, lon], 16);
+
+            L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+                    maxZoom: 19,
+                    attribution: "© OpenStreetMap"
+                }
+            ).addTo(mapa);
+
+            marcador = L.marker([lat, lon]).addTo(mapa);
+
+            lineaRuta = L.polyline([], {
+                weight: 5
+            }).addTo(mapa);
+        }
+
+        function calcularDistancia(lat1, lon1, lat2, lon2) {
+
+            const R = 6371;
+
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                +
+                Math.cos(lat1 * Math.PI / 180)
+                *
+                Math.cos(lat2 * Math.PI / 180)
+                *
+                Math.sin(dLon / 2)
+                *
+                Math.sin(dLon / 2);
+
+            const c =
+                2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return R * c;
+        }
+
+        function iniciarGPS() {
+
+            if (!navigator.geolocation) {
+
+                alert("Tu navegador no soporta GPS");
+
+                return;
+            }
+
+            watchId = navigator.geolocation.watchPosition(
+
+                function (posicion) {
+
+                    const lat = posicion.coords.latitude;
+                    const lon = posicion.coords.longitude;
+
+                    const speed = posicion.coords.speed;
+
+                    if (!mapa) {
+
+                        iniciarMapa(lat, lon);
+                    }
+
+                    document.getElementById("latitud").textContent =
+                        lat.toFixed(6);
+
+                    document.getElementById("longitud").textContent =
+                        lon.toFixed(6);
+
+                    document.getElementById("velocidad").textContent =
+                        speed
+                            ? (speed * 3.6).toFixed(2)
+                            : "0.00";
+
+                    if (ultimaPosicion) {
+
+                        distanciaTotal += calcularDistancia(
+                            ultimaPosicion.lat,
+                            ultimaPosicion.lon,
+                            lat,
+                            lon
+                        );
+                    }
+
+                    ultimaPosicion = {
+                        lat,
+                        lon
+                    };
+
+                    puntosRuta.push([lat, lon]);
+
+                    marcador.setLatLng([lat, lon]);
+
+                    lineaRuta.setLatLngs(puntosRuta);
+
+                    mapa.setView([lat, lon]);
+
+                    document.getElementById("distancia").textContent =
+                        distanciaTotal.toFixed(3);
+
+                    fetch("/gps", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            latitud: lat,
+
+                            longitud: lon,
+
+                            velocidad: speed,
+
+                            distancia_total: distanciaTotal
+                        })
+                    });
+                },
+
+                function (error) {
+
+                    alert("Error GPS: " + error.message);
+                },
+
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 0,
+                    timeout: 10000
+                }
+            );
+        }
+
+        function pararGPS() {
+
+            if (watchId !== null) {
+
+                navigator.geolocation.clearWatch(watchId);
+
+                watchId = null;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
