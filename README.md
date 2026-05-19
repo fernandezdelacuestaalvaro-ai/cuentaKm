@@ -33,9 +33,10 @@ python web_app.py
 Abrir navegador:
 
 http://127.0.0.1:5000
-Futuras mejoras
-Exportación GPX
-Mapa OpenStreetMap
-Historial de rutas
-Desnivel
-Integración tipo Strava
+
+## Futuras mejoras
+- Exportación GPX
+- Mapa OpenStreetMap
+- Historial de rutas
+- Desnivel
+- Integración tipo Strava
