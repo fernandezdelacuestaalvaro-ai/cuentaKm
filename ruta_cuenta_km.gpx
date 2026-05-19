@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Cuenta KM GPS"
+     xmlns="http://www.topografix.com/GPX/1/1">
+    <trk>
+        <name>Actividad Cuenta KM GPS</name>
+        <type>cycling</type>
+        <trkseg>
+            
+        <trkpt lat="40.3575" lon="0.4069">
+            <time>2026-05-19T16:50:50.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35758" lon="0.407">
+            <time>2026-05-19T16:50:55.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35766" lon="0.40709999999999996">
+            <time>2026-05-19T16:51:00.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35774" lon="0.4072">
+            <time>2026-05-19T16:51:05.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.357820000000004" lon="0.4073">
+            <time>2026-05-19T16:51:10.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3579" lon="0.4074">
+            <time>2026-05-19T16:51:15.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.357980000000005" lon="0.4075">
+            <time>2026-05-19T16:51:20.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35806" lon="0.40759999999999996">
+            <time>2026-05-19T16:51:25.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35814" lon="0.4077">
+            <time>2026-05-19T16:51:30.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35822" lon="0.4078">
+            <time>2026-05-19T16:51:35.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3583" lon="0.4079">
+            <time>2026-05-19T16:51:40.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.358380000000004" lon="0.408">
+            <time>2026-05-19T16:51:45.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35846" lon="0.40809999999999996">
+            <time>2026-05-19T16:51:50.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.358540000000005" lon="0.4082">
+            <time>2026-05-19T16:51:55.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35862" lon="0.4083">
+            <time>2026-05-19T16:52:00.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3587" lon="0.4084">
+            <time>2026-05-19T16:52:05.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35878" lon="0.4085">
+            <time>2026-05-19T16:52:10.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35886" lon="0.40859999999999996">
+            <time>2026-05-19T16:52:15.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.358940000000004" lon="0.4087">
+            <time>2026-05-19T16:52:20.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35902" lon="0.4088">
+            <time>2026-05-19T16:52:25.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.359100000000005" lon="0.4089">
+            <time>2026-05-19T16:52:30.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35918" lon="0.409">
+            <time>2026-05-19T16:52:35.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35926" lon="0.40909999999999996">
+            <time>2026-05-19T16:52:40.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35934" lon="0.4092">
+            <time>2026-05-19T16:52:45.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35942" lon="0.4093">
+            <time>2026-05-19T16:52:50.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.359500000000004" lon="0.4094">
+            <time>2026-05-19T16:52:55.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35958" lon="0.4095">
+            <time>2026-05-19T16:53:00.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.359660000000005" lon="0.40959999999999996">
+            <time>2026-05-19T16:53:05.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35974" lon="0.4097">
+            <time>2026-05-19T16:53:10.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35982" lon="0.4098">
+            <time>2026-05-19T16:53:15.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3599" lon="0.4099">
+            <time>2026-05-19T16:53:20.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.35998" lon="0.41">
+            <time>2026-05-19T16:53:25.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.360060000000004" lon="0.41009999999999996">
+            <time>2026-05-19T16:53:30.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36014" lon="0.4102">
+            <time>2026-05-19T16:53:35.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36022" lon="0.4103">
+            <time>2026-05-19T16:53:40.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3603" lon="0.4104">
+            <time>2026-05-19T16:53:45.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36038" lon="0.4105">
+            <time>2026-05-19T16:53:50.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36046" lon="0.41059999999999997">
+            <time>2026-05-19T16:53:55.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36054" lon="0.4107">
+            <time>2026-05-19T16:54:00.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.360620000000004" lon="0.4108">
+            <time>2026-05-19T16:54:05.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3607" lon="0.4109">
+            <time>2026-05-19T16:54:10.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36078" lon="0.411">
+            <time>2026-05-19T16:54:15.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36086" lon="0.41109999999999997">
+            <time>2026-05-19T16:54:20.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36094" lon="0.4112">
+            <time>2026-05-19T16:54:25.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36102" lon="0.4113">
+            <time>2026-05-19T16:54:30.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3611" lon="0.4114">
+            <time>2026-05-19T16:54:35.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.361180000000004" lon="0.4115">
+            <time>2026-05-19T16:54:40.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36126" lon="0.41159999999999997">
+            <time>2026-05-19T16:54:45.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36134" lon="0.4117">
+            <time>2026-05-19T16:54:50.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36142" lon="0.4118">
+            <time>2026-05-19T16:54:55.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3615" lon="0.4119">
+            <time>2026-05-19T16:55:00.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.361580000000004" lon="0.412">
+            <time>2026-05-19T16:55:05.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36166" lon="0.41209999999999997">
+            <time>2026-05-19T16:55:10.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.361740000000005" lon="0.4122">
+            <time>2026-05-19T16:55:15.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36182" lon="0.4123">
+            <time>2026-05-19T16:55:20.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.3619" lon="0.4124">
+            <time>2026-05-19T16:55:25.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36198" lon="0.4125">
+            <time>2026-05-19T16:55:30.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36206" lon="0.41259999999999997">
+            <time>2026-05-19T16:55:35.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.362140000000004" lon="0.4127">
+            <time>2026-05-19T16:55:40.011719Z</time>
+        </trkpt>
+        
+        <trkpt lat="40.36222" lon="0.4128">
+            <time>2026-05-19T16:55:45.011719Z</time>
+        </trkpt>
+        
+        </trkseg>
+    </trk>
+</gpx>
