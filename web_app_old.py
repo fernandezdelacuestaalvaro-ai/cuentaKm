@@ -20,24 +20,10 @@ nombre_actividad_actual = "Actividad Cuenta KM GPS"
 tipo_actividad_actual = "Run"
 archivo_gpx_actual = "ruta_cuenta_km.gpx"
 
-strava_conectado = False
-
 
 @app.route("/")
 def home():
-    strava_html = (
-        '<div class="strava-status-box">'
-        '<a class="strava-btn disconnected" href="/strava/login">🔴 Conectar a Strava</a>'
-        '</div>'
-        if not strava_conectado
-        else
-        '<div class="strava-status-box">'
-        '<div class="strava-btn connected">🟢 Conectado a Strava</div>'
-        '</div>'
-    )
-    
     return """
-    
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -208,40 +194,6 @@ def home():
             margin-top: 6px;
         }
         
-        .strava-status-box {
-            margin-bottom: 18px;
-        }
-
-        .strava-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s;
-            box-sizing: border-box;
-        }
-
-        .strava-btn.disconnected {
-            background: #4a0d0d;
-            border: 1px solid #ff4d4d;
-            color: #ff8080;
-        }
-
-        .strava-btn.disconnected:hover {
-            background: #661111;
-            transform: scale(1.02);
-        }
-
-        .strava-btn.connected {
-            background: #0f3d1f;
-            border: 1px solid #00ff88;
-            color: #00ff88;
-        }        
-        
-        
         .sim-img {
             width: 100%;
             height: 170px;
@@ -291,10 +243,7 @@ def home():
         <aside>
             <section class="card menu">
                 <h2>Conexión</h2>
-              
-                   {STRAVA_STATUS}
-
-                
+                <a href="/strava/login">Conectar con Strava</a>
                 <a href="/actividades">Ver actividades Strava</a>
 
                 <h2 style="margin-top:25px;">Rutas</h2>
@@ -571,7 +520,7 @@ def home():
     </script>
 </body>
 </html>
-    """.replace("{STRAVA_STATUS}", strava_html)
+    """
 
 
 @app.route("/api/ruta")
@@ -626,14 +575,9 @@ def strava_login():
     return redirect(url)
 
 
-#----------------------------------
-#Llamar a strava
-#----------------------------------
-
 @app.route("/callback")
 def callback():
     global ACCESS_TOKEN
-    global strava_conectado
 
     code = request.args.get("code")
 
@@ -650,18 +594,15 @@ def callback():
     data = response.json()
     ACCESS_TOKEN = data.get("access_token")
 
-    if ACCESS_TOKEN:
-        strava_conectado = True
-
     atleta = data.get("athlete", {})
     nombre = atleta.get("firstname", "Usuario")
 
-    return """
+    return f"""
     <h1>STRAVA CONECTADO</h1>
-    <p>Usuario: """ + nombre + """</p>
+    <p>Usuario: {nombre}</p>
     <p>Tu aplicación ya puede acceder a Strava.</p>
-    <p><a href="/">Volver al panel principal</a></p>
     <p><a href="/actividades">Ver actividades</a></p>
+    <p><a href="/">Volver</a></p>
     """
 
 
